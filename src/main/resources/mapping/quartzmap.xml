@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="quartz.quartzframe.mapper.QuartzMapper">
+    <resultMap id="QuartzMap" type="quartz.quartzframe.DTO.QuartzDTO">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="jobname" property="jobName" jdbcType="VARCHAR"/>
+        <result column="jobgroupname" property="jobGroupName" jdbcType="VARCHAR"/>
+        <result column="triggername" property="triggerName" jdbcType="VARCHAR"/>
+        <result column="triggergroupname" property="triggerGroupName" jdbcType="VARCHAR"/>
+        <result column="expression" property="expression" jdbcType="VARCHAR"/>
+        <result column="classname" property="className" jdbcType="VARCHAR"/>
+        <result column="enable" property="enable" jdbcType="INTEGER"/>
+    </resultMap>
+    <sql id="Column_List">
+        id, jobname, jobgroupname, triggername, triggergroupname, expression, classname, enable
+    </sql>
+    
+    <select id="getJobData" resultMap="QuartzMap">
+        select
+        <include refid="Column_List"/>
+        from t_jobdetail where enable = 1
+    </select>
+</mapper>
