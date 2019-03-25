@@ -27,7 +27,7 @@ public class QuartzListener implements ApplicationRunner {
         System.out.println("----- 服务启动！-----");
         //数据库获取定时任务信息
         List<QuartzDTO> quartzDTOS = quartzMapper.getJobData();
-        for(QuartzDTO quartz : quartzDTOS){
+        for (QuartzDTO quartz : quartzDTOS) {
             System.out.println(quartz.getJobName() + " 定时任务启动------");
             QuartzFactory.quartzInstance(quartz);
         }
